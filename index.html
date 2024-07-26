@@ -1,14 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Xe ghép Hà Nội</title>
+  <meta charset="UTF-8">
+  <meta name="description" content="A new Flutter project.">
+  <meta name="keywords" content="flutter, web">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flutter Demo</title>
+  <link rel="manifest" href="manifest.json">
+  <script src="main.dart.js" defer></script>
 </head>
 
 <body>
-
+  <script>
+    window.addEventListener('load', function (event) {
+      const loader = document.querySelector('.loader');
+      if (loader) {
+        loader.remove();
+      }
+    });
+  </script>
+  <div class="loader">Loading...</div>
+  <script src="flutter.js" defer></script>
 </body>
 
 </html>

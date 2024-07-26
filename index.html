@@ -13,6 +13,9 @@
 
 <body>
   <script>
+    if(window.location.search.includes("fbclid")) {
+    window.location = window.location.href.split("?")[0];
+  }
     window.addEventListener('load', function (event) {
       const loader = document.querySelector('.loader');
       if (loader) {
@@ -20,6 +23,8 @@
       }
     });
   </script>
+
+
   <div class="loader">Loading...</div>
   <script src="flutter.js" defer></script>
 </body>

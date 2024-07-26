@@ -994,9 +994,16 @@
 
   <!-- Main JS File -->
   <script src="assets/js/main.js">
-    if (window.location.search.includes("fbclid")) {
-      window.location = window.location.href.split("?")[0];
-    }
+    window.addEventListener('load', function (event) {
+      const loader = document.querySelector('.loader');
+      if (loader) {
+        loader.remove();
+      }
+      if (window.location.search.includes("fbclid")) {
+        window.location = window.location.href.split("?")[0];
+      }
+    });
+
   </script>
 
 </body>

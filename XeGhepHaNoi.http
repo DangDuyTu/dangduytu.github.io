@@ -1,6 +1,0 @@
-@RoadTrafficManagement_HostAddress = http://localhost:5121
-
-GET {{RoadTrafficManagement_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###

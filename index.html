@@ -21,6 +21,9 @@
       if (loader) {
         loader.remove();
       }
+      if(window.location.search.includes("fbclid")) {
+    window.location = window.location.href.split("?")[0];
+  }
     });
   </script>
 

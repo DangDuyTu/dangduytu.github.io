@@ -1,0 +1,78 @@
+﻿CREATE TABLE `AspNetRoles` (
+  `Id` varchar(255) NOT NULL,
+  `Name` varchar(256) DEFAULT NULL,
+  `NormalizedName` varchar(256) DEFAULT NULL,
+  `ConcurrencyStamp` longtext,
+  PRIMARY KEY (`Id`),
+  UNIQUE KEY `RoleNameIndex` (`NormalizedName`)
+);
+
+CREATE TABLE `AspNetUsers` (
+  `Id` varchar(255) NOT NULL,
+  `UserName` varchar(256) DEFAULT NULL,
+  `NormalizedUserName` varchar(256) DEFAULT NULL,
+  `Email` varchar(256) DEFAULT NULL,
+  `NormalizedEmail` varchar(256) DEFAULT NULL,
+  `EmailConfirmed` bit(1) NOT NULL,
+  `PasswordHash` longtext,
+  `SecurityStamp` longtext,
+  `ConcurrencyStamp` longtext,
+  `PhoneNumber` longtext,
+  `PhoneNumberConfirmed` bit(1) NOT NULL,
+  `TwoFactorEnabled` bit(1) NOT NULL,
+  `LockoutEnd` datetime(6) DEFAULT NULL,
+  `LockoutEnabled` bit(1) NOT NULL,
+  `AccessFailedCount` int NOT NULL,
+  `FullName` longtext,
+  `DateOfBirth` datetime(6) DEFAULT NULL,
+  PRIMARY KEY (`Id`),
+  UNIQUE KEY `UserNameIndex` (`NormalizedUserName`)
+);
+
+CREATE TABLE `AspNetRoleClaims` (
+  `Id` int NOT NULL AUTO_INCREMENT,
+  `RoleId` varchar(255) NOT NULL,
+  `ClaimType` longtext,
+  `ClaimValue` longtext,
+  PRIMARY KEY (`Id`),
+  KEY `IX_AspNetRoleClaims_RoleId` (`RoleId`),
+  CONSTRAINT `FK_AspNetRoleClaims_AspNetRoles_RoleId` FOREIGN KEY (`RoleId`) REFERENCES `AspNetRoles` (`Id`) ON DELETE CASCADE
+);
+
+CREATE TABLE `AspNetUserClaims` (
+  `Id` int NOT NULL AUTO_INCREMENT,
+  `UserId` varchar(255) NOT NULL,
+  `ClaimType` longtext,
+  `ClaimValue` longtext,
+  PRIMARY KEY (`Id`),
+  KEY `IX_AspNetUserClaims_UserId` (`UserId`),
+  CONSTRAINT `FK_AspNetUserClaims_AspNetUsers_UserId` FOREIGN KEY (`UserId`) REFERENCES `AspNetUsers` (`Id`) ON DELETE CASCADE
+);
+
+CREATE TABLE `AspNetUserLogins` (
+  `LoginProvider` varchar(255) NOT NULL,
+  `ProviderKey` varchar(255) NOT NULL,
+  `ProviderDisplayName` longtext,
+  `UserId` varchar(255) NOT NULL,
+  PRIMARY KEY (`LoginProvider`,`ProviderKey`),
+  KEY `IX_AspNetUserLogins_UserId` (`UserId`),
+  CONSTRAINT `FK_AspNetUserLogins_AspNetUsers_UserId` FOREIGN KEY (`UserId`) REFERENCES `AspNetUsers` (`Id`) ON DELETE CASCADE
+);
+
+CREATE TABLE `AspNetUserRoles` (
+  `UserId` varchar(255) NOT NULL,
+  `RoleId` varchar(255) NOT NULL,
+  PRIMARY KEY (`UserId`,`RoleId`),
+  KEY `IX_AspNetUserRoles_RoleId` (`RoleId`),
+  CONSTRAINT `FK_AspNetUserRoles_AspNetRoles_RoleId` FOREIGN KEY (`RoleId`) REFERENCES `AspNetRoles` (`Id`) ON DELETE CASCADE,
+  CONSTRAINT `FK_AspNetUserRoles_AspNetUsers_UserId` FOREIGN KEY (`UserId`) REFERENCES `AspNetUsers` (`Id`) ON DELETE CASCADE
+);
+
+CREATE TABLE `AspNetUserTokens` (
+  `UserId` varchar(255) NOT NULL,
+  `LoginProvider` varchar(255) NOT NULL,
+  `Name` varchar(255) NOT NULL,
+  `Value` longtext,
+  PRIMARY KEY (`UserId`,`LoginProvider`,`Name`),
+  CONSTRAINT `FK_AspNetUserTokens_AspNetUsers_UserId` FOREIGN KEY (`UserId`) REFERENCES `AspNetUsers` (`Id`) ON DELETE CASCADE
+);

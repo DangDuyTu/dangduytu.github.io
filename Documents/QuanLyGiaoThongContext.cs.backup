@@ -1,0 +1,285 @@
+﻿using System;
+using System.Collections.Generic;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
+using Pomelo.EntityFrameworkCore.MySql.Scaffolding.Internal;
+
+namespace RoadTrafficManagement.AppModels;
+
+public partial class QuanLyGiaoThongContext : IdentityDbContext<ApplicationUser>
+{
+    public QuanLyGiaoThongContext()
+    {
+    }
+
+    public QuanLyGiaoThongContext(DbContextOptions<QuanLyGiaoThongContext> options)
+        : base(options)
+    {
+    }
+
+    public virtual DbSet<GoverningBody> GoverningBodies { get; set; }
+
+    public virtual DbSet<Personnel> Personnel { get; set; }
+
+    public virtual DbSet<Road> Roads { get; set; }
+
+    public virtual DbSet<RoadGuardrail> RoadGuardrails { get; set; }
+
+    public virtual DbSet<RoadInfrastructure> RoadInfrastructures { get; set; }
+
+    public virtual DbSet<RoadProperty> RoadProperties { get; set; }
+
+    public virtual DbSet<RoadSection> RoadSections { get; set; }
+
+    public virtual DbSet<RoadSesionType> RoadSesionTypes { get; set; }
+
+    public virtual DbSet<RoadType> RoadTypes { get; set; }
+
+    public virtual DbSet<RoadwayIssue> RoadwayIssues { get; set; }
+
+    public virtual DbSet<RoadwayIssuesType> RoadwayIssuesTypes { get; set; }
+
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        if (!optionsBuilder.IsConfigured)
+        {
+            optionsBuilder.UseSqlServer("Data Source=DUYTU\\MISASME2023;Initial Catalog=baotrithuongxuyen;Integrated Security=True;Encrypt=False");
+        }
+    }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        base.OnModelCreating(modelBuilder);
+
+        modelBuilder.Entity<GoverningBody>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PRIMARY");
+
+            entity.ToTable("GoverningBody");
+
+            entity.HasIndex(e => e.GoverningCode).IsUnique();
+
+            entity.Property(e => e.Address).HasMaxLength(255);
+            entity.Property(e => e.CreatedDate);
+            entity.Property(e => e.Description).HasMaxLength(255);
+            entity.Property(e => e.GoverningCode).HasMaxLength(60);
+            entity.Property(e => e.GoverningName).HasMaxLength(255);
+            entity.Property(e => e.ModifiedDate);
+            entity.Property(e => e.PhoneNumber).HasMaxLength(20);
+        });
+
+        modelBuilder.Entity<Personnel>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PRIMARY");
+
+            entity.HasIndex(e => e.PersonelCode).IsUnique();
+
+            entity.Property(e => e.Id).ValueGeneratedNever();
+            entity.Property(e => e.CreatedDate);
+            entity.Property(e => e.Department).HasMaxLength(20);
+            entity.Property(e => e.EmploymentType).HasMaxLength(60);
+            entity.Property(e => e.FullName).HasMaxLength(100);
+            entity.Property(e => e.MobilePhoneNumber).HasMaxLength(20);
+            entity.Property(e => e.ModifiedDate);
+            entity.Property(e => e.PersonelCode).HasMaxLength(60);
+        });
+
+        modelBuilder.Entity<Road>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PRIMARY");
+
+            entity.ToTable("Road");
+
+            entity.HasIndex(e => e.ParentId);
+
+            entity.HasIndex(e => e.TypeId);
+
+            entity.HasIndex(e => e.RoadCode).IsUnique();
+
+            entity.Property(e => e.ChainageFrom).HasMaxLength(30);
+            entity.Property(e => e.ChainageTo).HasMaxLength(30);
+            entity.Property(e => e.CreatedDate);
+            entity.Property(e => e.Description).HasMaxLength(255);
+            entity.Property(e => e.EndGps).HasMaxLength(100).HasColumnName("EndGPS");
+            entity.Property(e => e.KilometerEnd);
+            entity.Property(e => e.KilometerStart);
+            entity.Property(e => e.ModifiedDate);
+            entity.Property(e => e.RoadCode).HasMaxLength(100);
+            entity.Property(e => e.RoadName).HasMaxLength(255);
+            entity.Property(e => e.StartGps).HasMaxLength(100).HasColumnName("StartGPS");
+
+            entity.HasOne(d => d.Parent).WithMany(p => p.InverseParent)
+                .HasForeignKey(d => d.ParentId);
+
+            entity.HasOne(d => d.Type).WithMany(p => p.Roads)
+                .HasForeignKey(d => d.TypeId);
+        });
+
+        modelBuilder.Entity<RoadGuardrail>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PRIMARY");
+
+            entity.ToTable("RoadGuardrail");
+
+            entity.HasIndex(e => e.RoadId);
+
+            entity.Property(e => e.CreatedDate);
+            entity.Property(e => e.Description).HasMaxLength(255);
+            entity.Property(e => e.KilometerEnd);
+            entity.Property(e => e.KilometerStart);
+            entity.Property(e => e.ModifiedDate);
+            entity.Property(e => e.Status).HasMaxLength(255);
+
+            entity.HasOne(d => d.Road).WithMany(p => p.RoadGuardrails)
+                .HasForeignKey(d => d.RoadId)
+                .OnDelete(DeleteBehavior.ClientSetNull);
+        });
+
+        modelBuilder.Entity<RoadInfrastructure>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PRIMARY");
+
+            entity.ToTable("RoadInfrastructure");
+
+            entity.HasIndex(e => e.RoadId);
+
+            entity.HasIndex(e => e.PropertyId);
+
+            entity.Property(e => e.Chainage).HasMaxLength(50);
+            entity.Property(e => e.CreatedDate);
+            entity.Property(e => e.Description).HasMaxLength(255);
+            entity.Property(e => e.InstallationDate);
+            entity.Property(e => e.Kilometer);
+            entity.Property(e => e.Location).HasMaxLength(50);
+            entity.Property(e => e.ModifiedDate);
+            entity.Property(e => e.Status).HasMaxLength(50);
+
+            entity.HasOne(d => d.Property).WithMany(p => p.RoadInfrastructures)
+                .HasForeignKey(d => d.PropertyId)
+                .OnDelete(DeleteBehavior.ClientSetNull);
+
+            entity.HasOne(d => d.Road).WithMany(p => p.RoadInfrastructures)
+                .HasForeignKey(d => d.RoadId)
+                .OnDelete(DeleteBehavior.ClientSetNull);
+        });
+
+        modelBuilder.Entity<RoadProperty>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PRIMARY");
+
+            entity.ToTable("RoadProperty");
+
+            entity.HasIndex(e => e.PropertyCode).IsUnique();
+
+            entity.Property(e => e.CreatedDate);
+            entity.Property(e => e.Description).HasMaxLength(255);
+            entity.Property(e => e.ModifiedDate);
+            entity.Property(e => e.PropertyCode).HasMaxLength(100);
+            entity.Property(e => e.PropertyName).HasMaxLength(255);
+        });
+
+        modelBuilder.Entity<RoadSection>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PRIMARY");
+
+            entity.ToTable("RoadSection");
+
+            entity.HasIndex(e => e.RoadId);
+
+            entity.HasIndex(e => e.SessionTypeId);
+
+            entity.HasIndex(e => e.RoadSessionCode).IsUnique();
+
+            entity.Property(e => e.ChainageFrom).HasMaxLength(30);
+            entity.Property(e => e.ChainageTo).HasMaxLength(30);
+            entity.Property(e => e.CreatedDate);
+            entity.Property(e => e.Description).HasMaxLength(255);
+            entity.Property(e => e.EndGps).HasMaxLength(100).HasColumnName("EndGPS");
+            entity.Property(e => e.KilometerEnd).HasDefaultValueSql("0.000000");
+            entity.Property(e => e.KilometerStart).HasDefaultValueSql("0.000000");
+            entity.Property(e => e.ModifiedDate);
+            entity.Property(e => e.RoadSessionCode).HasMaxLength(100);
+            entity.Property(e => e.RoadSessionName).HasMaxLength(255);
+            entity.Property(e => e.StartGps).HasMaxLength(100).HasColumnName("StartGPS");
+
+            entity.HasOne(d => d.Road).WithMany(p => p.RoadSections)
+                .HasForeignKey(d => d.RoadId)
+                .OnDelete(DeleteBehavior.ClientSetNull);
+
+            entity.HasOne(d => d.SessionType).WithMany(p => p.RoadSections)
+                .HasForeignKey(d => d.SessionTypeId);
+        });
+
+        modelBuilder.Entity<RoadSesionType>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PRIMARY");
+
+            entity.ToTable("RoadSesionType");
+
+            entity.HasIndex(e => e.TypeCode).IsUnique();
+
+            entity.Property(e => e.CreatedDate);
+            entity.Property(e => e.Description).HasMaxLength(255);
+            entity.Property(e => e.ModifiedDate);
+            entity.Property(e => e.TypeCode).HasMaxLength(100);
+            entity.Property(e => e.TypeName).HasMaxLength(255);
+        });
+
+        modelBuilder.Entity<RoadType>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PRIMARY");
+
+            entity.ToTable("RoadType");
+
+            entity.HasIndex(e => e.TypeCode).IsUnique();
+
+            entity.Property(e => e.CreatedDate);
+            entity.Property(e => e.Description).HasMaxLength(255);
+            entity.Property(e => e.ModifiedDate);
+            entity.Property(e => e.TypeCode).HasMaxLength(100);
+            entity.Property(e => e.TypeName).HasMaxLength(255);
+        });
+
+        modelBuilder.Entity<RoadwayIssue>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PRIMARY");
+
+            entity.ToTable("RoadwayIssue");
+
+            entity.HasIndex(e => e.TypeId);
+
+            entity.HasIndex(e => e.IssueCode).IsUnique();
+
+            entity.Property(e => e.CreatedDate);
+            entity.Property(e => e.Description).HasColumnType("mediumtext");
+            entity.Property(e => e.IssueDate);
+            entity.Property(e => e.IssueName).HasColumnType("mediumtext");
+            entity.Property(e => e.ModifiedDate);
+
+            entity.HasOne(d => d.Type).WithMany(p => p.RoadwayIssues)
+                .HasForeignKey(d => d.TypeId)
+                .OnDelete(DeleteBehavior.ClientSetNull);
+        });
+
+        modelBuilder.Entity<RoadwayIssuesType>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PRIMARY");
+
+            entity.ToTable("RoadwayIssuesType");
+
+            entity.HasIndex(e => e.TypeCode).IsUnique();
+
+            entity.Property(e => e.CreatedDate);
+            entity.Property(e => e.Description).HasMaxLength(255);
+            entity.Property(e => e.ModifiedDate);
+            entity.Property(e => e.TypeCode).HasMaxLength(100);
+            entity.Property(e => e.TypeName).HasMaxLength(100);
+        });
+
+        OnModelCreatingPartial(modelBuilder);
+    }
+
+
+    partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
+}

@@ -1,0 +1,24 @@
+{
+  "dependencies": {
+    "apis1": {
+      "restored": true,
+      "restoreTime": "2024-07-12T07:46:55.8891359Z"
+    },
+    "mssql1": {
+      "restored": true,
+      "restoreTime": "2024-07-12T07:57:45.9497547Z"
+    }
+  },
+  "parameters": {
+    "apis1.resourceGroupName": {
+      "Name": "apis1.resourceGroupName",
+      "Type": "resourceGroup",
+      "Value": "bttx_group"
+    },
+    "apis1.subscriptionId": {
+      "Name": "apis1.subscriptionId",
+      "Type": "subscription",
+      "Value": "d5ac3fc8-9a79-4d22-bcb9-a7cb6716ba72"
+    }
+  }
+}

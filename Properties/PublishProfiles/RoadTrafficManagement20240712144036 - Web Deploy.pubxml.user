@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project>
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAoZzBRCJHs0m7yJtuneKX7wAAAAACAAAAAAAQZgAAAAEAACAAAABrPeU5n9s1A1qJLYdeAe/AnFC9HCKKE1Xz/1qwDebmOgAAAAAOgAAAAAIAACAAAAA737Wo9Vg5kPL9wbNtq3+gh8iTjuagkH/0nO+SijdzZ4AAAAAhciikXOzODq4yCZhTg+rCSqSnLrBJ2qQlj2Jp5AsiZzs8igeKbRupUZ+KRMRhyEELzZ9uuTbANlmEq9dFFoDkfvcV2rSigMo7M1bcexOAHK9cW2P241Wbgpdui/lEMwog/NC1cLx06RN3kpBqGhWFmY5kGsxVbP/Svqblb7n4hkAAAADZJ1UzJmEWbqRW/7DuTruzxji7+ek/VOSOJdbYjOWQVfpcUajwtTAUwJiXE8lTuT/tEeHaAI+4etlJB2Eg6rlQ</EncryptedPassword>
+    <History>True|2024-07-12T07:52:22.7834901Z||;True|2024-07-12T14:49:40.6904510+07:00||;</History>
+    <LastFailureDetails />
+  </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="MySqlConnection">
+      <Value>Data Source=DUYTU\MISASME2023%3bInitial Catalog=QuanLyGiaoThong%3bIntegrated Security=True%3bEncrypt=False</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+</Project>

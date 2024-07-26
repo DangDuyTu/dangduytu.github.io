@@ -1,0 +1,1574 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "RoadTrafficManagement, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+    "version": "1.0"
+  },
+  "paths": {
+    "/Account/register": {
+      "post": {
+        "tags": [
+          "Account"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/RegisterModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Auth/register": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/RegisterModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Auth/login": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/LoginModel"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Personnel/GetById/{Id}": {
+      "get": {
+        "tags": [
+          "Personnel"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "Id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Personnel/GetAll/{startIndex}/{count}": {
+      "get": {
+        "tags": [
+          "Personnel"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "startIndex",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "in": "path",
+            "name": "count",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Personnel/Search": {
+      "get": {
+        "tags": [
+          "Personnel"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/PersonnelCriteria"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Personnel/Create": {
+      "post": {
+        "tags": [
+          "Personnel"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/PersonnelRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Personnel/Update": {
+      "post": {
+        "tags": [
+          "Personnel"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/PersonnelRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Personnel/Delete": {
+      "post": {
+        "tags": [
+          "Personnel"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/PersonnelRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Road/GetById/{Id}": {
+      "get": {
+        "tags": [
+          "Road"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "Id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Road/GetAll/{startIndex}/{count}": {
+      "get": {
+        "tags": [
+          "Road"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "startIndex",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "in": "path",
+            "name": "count",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Road/Search": {
+      "get": {
+        "tags": [
+          "Road"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/RoadCriteria"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Road/Create": {
+      "post": {
+        "tags": [
+          "Road"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/RoadRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Road/Update": {
+      "post": {
+        "tags": [
+          "Road"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/RoadRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/Road/Delete": {
+      "post": {
+        "tags": [
+          "Road"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/RoadRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/RoadProperty/GetById/{Id}": {
+      "get": {
+        "tags": [
+          "RoadProperty"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "Id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/RoadProperty/GetAll/{startIndex}/{count}": {
+      "get": {
+        "tags": [
+          "RoadProperty"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "startIndex",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "in": "path",
+            "name": "count",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/RoadProperty/Search": {
+      "post": {
+        "tags": [
+          "RoadProperty"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/RoadPropertyCriteria"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/RoadProperty/Create": {
+      "post": {
+        "tags": [
+          "RoadProperty"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/RoadPropertyRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/RoadProperty/Update": {
+      "post": {
+        "tags": [
+          "RoadProperty"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/RoadPropertyRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/RoadProperty/Delete": {
+      "post": {
+        "tags": [
+          "RoadProperty"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/RoadPropertyRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/RoadSesion/Create": {
+      "post": {
+        "tags": [
+          "RoadSesion"
+        ],
+        "operationId": "CreateRoadSesion",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/RoadSection"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/RoadSesion/Update": {
+      "post": {
+        "tags": [
+          "RoadSesion"
+        ],
+        "operationId": "UpdateRoadSesion",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/RoadSection"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/RoadSesion/Delete": {
+      "post": {
+        "tags": [
+          "RoadSesion"
+        ],
+        "operationId": "DeleteRoadSesion",
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/RoadSection"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/RoadType/GetById/{Id}": {
+      "get": {
+        "tags": [
+          "RoadType"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "Id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/RoadType/GetAll/{startIndex}/{count}": {
+      "get": {
+        "tags": [
+          "RoadType"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "startIndex",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "in": "path",
+            "name": "count",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/RoadType/Search": {
+      "post": {
+        "tags": [
+          "RoadType"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/RoadCriteria"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/RoadType/Create": {
+      "post": {
+        "tags": [
+          "RoadType"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/RoadRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/RoadType/Update": {
+      "post": {
+        "tags": [
+          "RoadType"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/RoadRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/RoadType/Delete": {
+      "post": {
+        "tags": [
+          "RoadType"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/RoadRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/RoadwayIssuesType/GetById/{Id}": {
+      "get": {
+        "tags": [
+          "RoadwayIssuesType"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "Id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/RoadwayIssuesType/GetRoadwayIssues/{Id}": {
+      "get": {
+        "tags": [
+          "RoadwayIssuesType"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "Id",
+            "required": true,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/RoadwayIssuesType/Create": {
+      "post": {
+        "tags": [
+          "RoadwayIssuesType"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/RoadwayIssuesTypeRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/RoadwayIssuesType/Update": {
+      "post": {
+        "tags": [
+          "RoadwayIssuesType"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/RoadwayIssuesType"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/RoadwayIssuesType/Delete": {
+      "post": {
+        "tags": [
+          "RoadwayIssuesType"
+        ],
+        "consumes": [
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/RoadwayIssuesType"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "LoginModel": {
+      "type": "object",
+      "properties": {
+        "username": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      }
+    },
+    "PersonnelCriteria": {
+      "type": "object",
+      "properties": {
+        "startIndex": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "count": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "personelCode": {
+          "type": "string"
+        },
+        "fullName": {
+          "type": "string"
+        },
+        "mobilePhoneNumber": {
+          "type": "string"
+        },
+        "department": {
+          "type": "string"
+        },
+        "employmentType": {
+          "type": "string"
+        }
+      }
+    },
+    "PersonnelRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "personelCode": {
+          "type": "string"
+        },
+        "fullName": {
+          "type": "string"
+        },
+        "mobilePhoneNumber": {
+          "type": "string"
+        },
+        "department": {
+          "type": "string"
+        },
+        "employmentType": {
+          "type": "string"
+        },
+        "createdDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "modifiedDate": {
+          "format": "date-time",
+          "type": "string"
+        }
+      }
+    },
+    "RegisterModel": {
+      "type": "object",
+      "properties": {
+        "userName": {
+          "type": "string"
+        },
+        "fullName": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        }
+      }
+    },
+    "Road": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "typeId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "parentId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "roadCode": {
+          "type": "string"
+        },
+        "roadName": {
+          "type": "string"
+        },
+        "chainageFrom": {
+          "type": "string"
+        },
+        "chainageTo": {
+          "type": "string"
+        },
+        "kilometerStart": {
+          "format": "double",
+          "type": "number"
+        },
+        "kilometerEnd": {
+          "format": "double",
+          "type": "number"
+        },
+        "startGps": {
+          "type": "string"
+        },
+        "endGps": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "createdDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "modifiedDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "inverseParent": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Road"
+          }
+        },
+        "parent": {
+          "$ref": "#/definitions/Road"
+        },
+        "roadGuardrails": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RoadGuardrail"
+          }
+        },
+        "roadInfrastructures": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RoadInfrastructure"
+          }
+        },
+        "roadSections": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RoadSection"
+          }
+        },
+        "type": {
+          "$ref": "#/definitions/RoadType"
+        }
+      }
+    },
+    "RoadCriteria": {
+      "type": "object",
+      "properties": {
+        "startIndex": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "count": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "typeId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "parentId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "roadCode": {
+          "type": "string"
+        },
+        "roadName": {
+          "type": "string"
+        },
+        "chainageFrom": {
+          "type": "string"
+        },
+        "chainageTo": {
+          "type": "string"
+        },
+        "kilometerStart": {
+          "format": "double",
+          "type": "number"
+        },
+        "kilometerEnd": {
+          "format": "double",
+          "type": "number"
+        },
+        "startGps": {
+          "type": "string"
+        },
+        "endGps": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "RoadGuardrail": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "roadId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "kilometerStart": {
+          "format": "double",
+          "type": "number"
+        },
+        "kilometerEnd": {
+          "format": "double",
+          "type": "number"
+        },
+        "status": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "createdDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "modifiedDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "road": {
+          "$ref": "#/definitions/Road"
+        }
+      }
+    },
+    "RoadInfrastructure": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "propertyId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "roadId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "location": {
+          "type": "string"
+        },
+        "chainage": {
+          "type": "string"
+        },
+        "kilometer": {
+          "format": "double",
+          "type": "number"
+        },
+        "installationDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "createdDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "modifiedDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "property": {
+          "$ref": "#/definitions/RoadProperty"
+        },
+        "road": {
+          "$ref": "#/definitions/Road"
+        }
+      }
+    },
+    "RoadProperty": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "propertyCode": {
+          "type": "string"
+        },
+        "propertyName": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "createdDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "modifiedDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "roadInfrastructures": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RoadInfrastructure"
+          }
+        }
+      }
+    },
+    "RoadPropertyCriteria": {
+      "type": "object",
+      "properties": {
+        "startIndex": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "count": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "propertyCode": {
+          "type": "string"
+        },
+        "propertyName": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "createdDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "modifiedDate": {
+          "format": "date-time",
+          "type": "string"
+        }
+      }
+    },
+    "RoadPropertyRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "propertyCode": {
+          "type": "string"
+        },
+        "propertyName": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "createdDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "modifiedDate": {
+          "format": "date-time",
+          "type": "string"
+        }
+      }
+    },
+    "RoadRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "typeId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "parentId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "roadCode": {
+          "type": "string"
+        },
+        "roadName": {
+          "type": "string"
+        },
+        "chainageFrom": {
+          "type": "string"
+        },
+        "chainageTo": {
+          "type": "string"
+        },
+        "startGps": {
+          "type": "string"
+        },
+        "kilometerStart": {
+          "format": "double",
+          "type": "number"
+        },
+        "kilometerEnd": {
+          "format": "double",
+          "type": "number"
+        },
+        "endGps": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "createdDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "modifiedDate": {
+          "format": "date-time",
+          "type": "string"
+        }
+      }
+    },
+    "RoadSection": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "roadId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "sessionTypeId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "roadSessionCode": {
+          "type": "string"
+        },
+        "roadSessionName": {
+          "type": "string"
+        },
+        "chainageFrom": {
+          "type": "string"
+        },
+        "chainageTo": {
+          "type": "string"
+        },
+        "kilometerStart": {
+          "format": "double",
+          "type": "number"
+        },
+        "kilometerEnd": {
+          "format": "double",
+          "type": "number"
+        },
+        "startGps": {
+          "type": "string"
+        },
+        "endGps": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "createdDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "modifiedDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "road": {
+          "$ref": "#/definitions/Road"
+        },
+        "sessionType": {
+          "$ref": "#/definitions/RoadSesionType"
+        }
+      }
+    },
+    "RoadSesionType": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "typeCode": {
+          "type": "string"
+        },
+        "typeName": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "createdDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "modifiedDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "roadSections": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RoadSection"
+          }
+        }
+      }
+    },
+    "RoadType": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "typeCode": {
+          "type": "string"
+        },
+        "typeName": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "createdDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "modifiedDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "roads": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Road"
+          }
+        }
+      }
+    },
+    "RoadwayIssue": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "typeId": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "issueCode": {
+          "type": "string"
+        },
+        "issueName": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "issueDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "createdDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "modifiedDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/definitions/RoadwayIssuesType"
+        }
+      }
+    },
+    "RoadwayIssuesType": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "typeCode": {
+          "type": "string"
+        },
+        "typeName": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "createdDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "modifiedDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "roadwayIssues": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RoadwayIssue"
+          }
+        }
+      }
+    },
+    "RoadwayIssuesTypeRequest": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "typeCode": {
+          "type": "string"
+        },
+        "typeName": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "createdDate": {
+          "format": "date-time",
+          "type": "string"
+        },
+        "modifiedDate": {
+          "format": "date-time",
+          "type": "string"
+        }
+      }
+    }
+  }
+}

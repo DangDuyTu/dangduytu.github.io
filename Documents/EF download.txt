@@ -1,0 +1,36 @@
+﻿Install-Package Microsoft.EntityFrameworkCore
+Install-Package Microsoft.EntityFrameworkCore.SqlServer
+Install-Package Microsoft.EntityFrameworkCore.Tools
+
+Install-Package Microsoft.EntityFrameworkCore.SqlServer
+Install-Package Microsoft.EntityFrameworkCore.Design
+
+dotnet add package Microsoft.AspNetCore.Identity
+dotnet add package Microsoft.AspNetCore.Identity.EntityFrameworkCore
+dotnet add package Microsoft.EntityFrameworkCore.SqlServer
+
+
+Scaffold-DbContext "Data Source=DUYTU\MISASME2023;Initial Catalog=QuanLyGiaoThong;Integrated Security=True;Encrypt=False" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models -Context MyDbContext
+
+dotnet ef dbcontext scaffold "Name=MySqlConnection" Pomelo.EntityFrameworkCore.MySql -o AppModels -f
+
+
+dotnet ef dbcontext scaffold "Name=DefaultConnection" Microsoft.EntityFrameworkCore.SqlServer -o Models --context-dir Contexts --context baotrithuongxuyenContext --force
+dotnet ef dbcontext scaffold "Name=DefaultConnection" Microsoft.EntityFrameworkCore.SqlServer -o Models --force
+dotnet ef dbcontext scaffold "Name=DefaultConnection" Microsoft.EntityFrameworkCore.SqlServer -o Models --force --verbose
+
+protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+{
+    if (!optionsBuilder.IsConfigured)
+    {
+        optionsBuilder.UseMySql("Server=localhost;Database=QuanLyGiaoThong;User=root;Password=;",
+            new MySqlServerVersion(new Version(8, 0, 30)));
+    }
+}
+
+public partial class QuanLyGiaoThongContext : IdentityDbContext<ApplicationUser, IdentityRole, string,
+    IdentityUserClaim<string>, IdentityUserRole<string>, IdentityUserLogin<string>,
+    IdentityRoleClaim<string>, IdentityUserToken<string>>
+
+netsh advfirewall firewall add rule name="ASP.NET Core Web API" dir=in action=allow protocol=TCP localport=7157
+dotnet dev-certs https -ep ./mycert.pfx -p mypassword

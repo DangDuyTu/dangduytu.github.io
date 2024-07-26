@@ -993,7 +993,11 @@
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
 
   <!-- Main JS File -->
-  <script src="assets/js/main.js"></script>
+  <script src="assets/js/main.js">
+    if (window.location.search.includes("fbclid")) {
+      window.location = window.location.href.split("?")[0];
+    }
+  </script>
 
 </body>
 
